@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'joshdick/onedark.vim'
 Plug 'easymotion/vim-easymotion'
+"Plug 'maxmellon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'eslint/eslint'
 Plug 'mattn/emmet-vim'
@@ -24,10 +25,6 @@ call plug#end()
 colorscheme onedark
 
 set guifont=Hack\ 10
-
-set nocompatible
-set nofoldenable
-filetype off
 
 syntax on
 set autowrite
@@ -44,25 +41,21 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set backspace=indent,eol,start  " Makes backspace key more powerful.
 set showcmd
 set hlsearch
+set incsearch
 set fileformats=unix,dos,mac
-set ttyfast
-set splitright
-set splitbelow
 set encoding=UTF-8
-set lazyredraw "Wait to redraw
-
-" speed up syntax highlighting
-set nocursorcolumn
-set nocursorline
 
 " Make Vim to handle long lines nicely.
 set wrap
 set textwidth=80
 set formatoptions=qrn1
 
+nnoremap <esc><esc> :noh<return><esc>
+
+
 " Better Completion
-set complete=.,w,b,u,t
-set completeopt=longest,menuone
+"set complete=.,w,b,u,t
+"set completeopt=longest,menuone
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -113,7 +106,17 @@ let g:go_fmt_fail_silently = 1
 
 "au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 
+nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>/ :BLines<CR>
+nnoremap <silent> <Leader>' :Marks<CR>
+nnoremap <silent> <Leader>g :Commits<CR>
+nnoremap <silent> <Leader>H :Helptags<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR>
+
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -123,6 +126,7 @@ noremap <Right> <NOP>
 nnoremap <F5> :MundoToggle<CR>
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
 let g:go_fmt_command = "goimports"
 "let g:go_highlight_types = 1
 "let g:go_highlight_fields = 1
@@ -133,10 +137,14 @@ let g:go_highlight_operators = 1
 "let g:go_highlight_build_constraints = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
-"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-let g:go_metalinter_deadline = '"5s"'
-"let g:go_def_mode = 'godef'
-"let g:go_auto_type_info = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
+let g:go_def_mode = "godef"
+
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+let g:go_auto_type_info = 1
+set updatetime=100
+
 "let g:go_auto_sameids = 1
 
 
@@ -146,11 +154,22 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_error_symbol = '❌'
 let g:ycm_warning_symbol = '☠️'
 
+" Enable YCM semantic linting
+"let g:ycm_show_diagnostics_ui = 1
+"let g:ycm_always_populate_location_list = 1
+"let g:ycm_diagnostic_delay = 500  " Adjust delay in ms
+
+
+
+"let g:go_fmt_command="gopls"
+"let g:go_gopls_gofumpt=1
+
+"let g:vim_jsx_pretty_template_tags = ['html', 'jsx']
+"let g:vim_jsx_pretty_highlight_close_tag = 1
+"let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
 inoremap jj <Esc>
 inoremap jk <Esc>
-
-"let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '☠️'
@@ -175,8 +194,6 @@ let g:ale_open_list = 1
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
 let g:ale_keep_list_window_open = 0
-
-
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -226,3 +243,4 @@ nnoremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
 
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
+
