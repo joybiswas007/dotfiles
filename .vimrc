@@ -3,6 +3,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/gv.vim'
 Plug 'valloric/youcompleteme'
 Plug 'luochen1990/rainbow'
@@ -11,27 +12,25 @@ Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
-Plug 'joshdick/onedark.vim'
+Plug 'flazz/vim-colorschemes'
 Plug 'easymotion/vim-easymotion'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'eslint/eslint'
 Plug 'mattn/emmet-vim'
 Plug 'simnalamburt/vim-mundo'
-Plug 'benmills/vimux'
+Plug 'preservim/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'galooshi/vim-import-js'
 call plug#end()
 
-colorscheme onedark
-
-set guifont=Hack\ 10
+colorscheme obsidian
 syntax on
+filetype plugin indent on
 set autowrite
 set number
 set hidden
 set nocp
 set ruler
-filetype plugin indent on
 set relativenumber number
 set nowrapscan
 set nrformats+=alpha
@@ -43,9 +42,6 @@ set hlsearch
 set incsearch
 set fileformats=unix,dos,mac
 set encoding=utf-8
-set wrap
-set textwidth=80
-set formatoptions=qrn1
 set undofile
 set undodir=~/.vim/undo
 set updatetime=100
@@ -69,10 +65,18 @@ nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+" au filetype go inoremap <buffer> . .<C-x><C-o>
 
+
+let g:go_diagnostics_enabled = 1
 let g:go_fmt_command = "goimports"
-"let g:go_highlight_types = 1
-""let g:go_highlight_fields = 1
+"let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_jump_to_error = 0
+"let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
@@ -88,24 +92,14 @@ let g:go_auto_type_info = 1
 "let g:go_auto_sameids = 1
 
 
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-
 setlocal omnifunc=ale#complete#Complete
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'javascriptreact': ['eslint'],
-\ }
-let g:ale_fixers = {
-\   'javascript': ['eslint', "prettier", "importjs"],
-\   'javascriptreact': ['eslint', "prettier", "importjs"],
-\ }
+let g:ale_linters = { 'javascript': ['eslint'], 'javascriptreact': ['eslint'], 'go': []}
+let g:ale_fixers = {'javascript': ['eslint', "prettier", "importjs"], 'javascriptreact': ['eslint', "prettier", "importjs"]}
 
 let g:ale_fix_on_save = 1 
 let g:ale_lint_on_text_changed = 'never'
@@ -125,29 +119,24 @@ let g:ale_keep_list_window_open = 0
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+let g:airline_theme="minimalist"
 let g:airline#extensions#ale#enabled = 1
 
 nnoremap <F5> :MundoToggle<CR>
 
-
-"let g:ycm_enable_semantic_highlighting=1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_gopls_binary_path = expand('$GOPATH/bin/gopls')
 let g:ycm_error_symbol = '❌'
 let g:ycm_warning_symbol = '☠️'
-
-" Enable YCM semantic linting
-"let g:ycm_show_diagnostics_ui = 1
-"let g:ycm_always_populate_location_list = 1
-"let g:ycm_diagnostic_delay = 500  " Adjust delay in ms
 
 autocmd FileType apache setlocal commentstring=#\ %s
 
 let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 2
 
-nnoremap <silent> {Left-Mapping} :<C-U>TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :<C-U>TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :<C-U>TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :<C-U>TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
+nnoremap <silent> {Left-Mapping} :<C-U>TmuxNavigateLeft<CR>
+nnoremap <silent> {Down-Mapping} :<C-U>TmuxNavigateDown<CR>
+nnoremap <silent> {Up-Mapping} :<C-U>TmuxNavigateUp<CR>
+nnoremap <silent> {Right-Mapping} :<C-U>TmuxNavigateRight<CR>
+nnoremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<CR>
