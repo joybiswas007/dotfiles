@@ -23,7 +23,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'galooshi/vim-import-js'
 call plug#end()
 
-colorscheme obsidian
+colorscheme molokai
 syntax on
 filetype plugin indent on
 set autowrite
@@ -45,6 +45,9 @@ set encoding=utf-8
 set undofile
 set undodir=~/.vim/undo
 set updatetime=100
+
+"disable paren highlighting. It's annoying
+let loaded_matchparen = 1
 
 nnoremap <esc><esc> :noh<return><esc>
 noremap <Up> <NOP>
@@ -73,7 +76,6 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
 let g:go_diagnostics_enabled = 1
 let g:go_fmt_command = "goimports"
-"let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
 let g:go_jump_to_error = 0
 "let g:go_highlight_fields = 1
