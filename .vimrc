@@ -2,16 +2,15 @@ call plug#begin()
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/gv.vim'
 Plug 'valloric/youcompleteme'
-Plug 'luochen1990/rainbow'
 Plug 'w0rp/ale'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'easymotion/vim-easymotion'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
