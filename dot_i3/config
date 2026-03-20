@@ -50,10 +50,10 @@ popup_during_fullscreen smart
 bindsym $mod+Return workspace $ws1; exec --no-startup-id alacritty
 
 # start a program launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/gruvbox.rasi
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/glassmorphism.rasi
 
 # switching window with win+tab
-bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/gruvbox.rasi
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/glassmorphism.rasi
 
 # kill focused window
 bindsym $mod+Shift+q kill
