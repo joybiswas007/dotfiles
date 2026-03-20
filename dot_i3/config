@@ -10,7 +10,7 @@ set $down   k
 set $up     l
 set $right  semicolon
 
-# define names for workspaces
+# define names for workspaces (Upgraded Devicons)
 set $ws1    "1:   Term "
 set $ws2    "2:   Code "
 set $ws3    "3: 󰖟  Web "
@@ -31,7 +31,7 @@ tiling_drag modifier titlebar
 # control focused window when follows the mouse movements
 focus_follows_mouse no
 
-# window border settings
+# window border settings (Clean colored outlines)
 default_border          pixel 2
 default_floating_border pixel 2
 
@@ -50,10 +50,10 @@ popup_during_fullscreen smart
 bindsym $mod+Return workspace $ws1; exec --no-startup-id alacritty
 
 # start a program launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/glassmorphism.rasi
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/gruvbox.rasi
 
 # switching window with win+tab
-bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/glassmorphism.rasi
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/gruvbox.rasi
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -220,12 +220,12 @@ for_window [window_role="pop-up"]                   floating enable
 for_window [window_role="task_dialog"]              floating enable
 for_window [title="Preferences$"]                   floating enable
 
-# --- Kanagawa Color Palette ---
-set $bg       #1f1f28
-set $fg       #dcd7ba
-set $inactive #2a2a37
-set $focus    #98bb6c
-set $urgent   #c34043
+# --- Gruvbox Warm Color Palette ---
+set $bg         #282828
+set $fg         #ebdbb2
+set $inactive   #504945
+set $focus      #d65d0e
+set $urgent     #cc241d
 
 # class                 border    backgr.   text      indicator child_border
 client.focused          $focus    $focus    $bg       $focus    $focus
@@ -247,16 +247,16 @@ bar {
     strip_workspace_numbers yes
 
     colors {
-        background  #1f1f28
-        statusline  #dcd7ba
-        separator   #54546d
+        background  #282828
+        statusline  #ebdbb2
+        separator   #504945
         
         # class             border    backgr.   text
-        focused_workspace   $focus    $focus    #1f1f28
+        focused_workspace   $focus    $focus    #282828
         active_workspace    $bg       $bg       $fg
-        inactive_workspace  $bg       $bg       #727169
+        inactive_workspace  $bg       $bg       #a89984
         urgent_workspace    $urgent   $urgent   $fg
-        binding_mode        #e6c384   #e6c384   #1f1f28
+        binding_mode        #98971a   #98971a   $bg
     }
 }
 
@@ -274,6 +274,7 @@ exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id conky -d
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle

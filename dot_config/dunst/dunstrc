@@ -15,9 +15,9 @@
     horizontal_padding = 10
     text_icon_padding = 0
     
-    # 2-pixel border matching the Kanagawa Spring Green focus color
+    # 2-pixel border matching the Gruvbox Burnt Orange
     frame_width = 2
-    frame_color = "#98bb6c"
+    frame_color = "#d65d0e"
     
     gap_size = 0
     separator_color = frame
@@ -27,8 +27,8 @@
     line_height = 0
     markup = full
     
-    # Title is now Spring Green to match the aesthetic
-    format = "<span foreground='#98bb6c'><b>%s %p</b></span>\n%b"
+    # Title is now Burnt Orange
+    format = "<span foreground='#d65d0e'><b>%s %p</b></span>\n%b"
     
     alignment = left
     vertical_alignment = center
@@ -53,22 +53,22 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    # Kanagawa Ink Black with CC (80%) opacity for glass effect
-    background = "#1f1f28cc"
-    foreground = "#727169"
+    # Gruvbox Dark with CC (80%) opacity
+    background = "#282828cc"
+    foreground = "#a89984"
     timeout = 10
 
 [urgency_normal]
-    background = "#1f1f28cc"
-    foreground = "#dcd7ba"
+    background = "#282828cc"
+    foreground = "#ebdbb2"
     timeout = 10
     override_pause_level = 30
 
 [urgency_critical]
-    # Keeps the glass background but flashes an Autumn Red border
-    background = "#1f1f28cc"
-    foreground = "#dcd7ba"
-    frame_color = "#c34043"
+    # Keeps the glass background but flashes Gruvbox Red
+    background = "#282828cc"
+    foreground = "#ebdbb2"
+    frame_color = "#cc241d"
     timeout = 0
     override_pause_level = 60
     default_icon = /usr/share/icons/Paper/16x16/status/dialog-warning.png

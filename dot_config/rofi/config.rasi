@@ -8,4 +8,4 @@ configuration {
     font: "Source Sans Pro 11.5";
 }
 
-@theme "~/.config/rofi/themes/glassmorphism.rasi"
+@theme "~/.config/rofi/themes/gruvbox.rasi"

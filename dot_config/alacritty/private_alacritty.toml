@@ -1,44 +1,45 @@
+[env]
+# Fixes color stripping when SSHing into remote servers
+TERM = "xterm-256color"
+
 [window]
+# Gives your terminal text a little breathing room from the edges
 padding = { x = 12, y = 12 }
 dynamic_padding = true
 
-# Glassmorphism settings
+# Glassmorphism settings (Picom will handle the actual blur)
 opacity = 0.85
-blur = true 
 
 [font]
+# Explicitly setting the size so it doesn't shrink
 size = 11.5
 
 [colors.primary]
-background = '#1f1f28'
-foreground = '#dcd7ba'
+background = '#282828'
+foreground = '#ebdbb2'
 
 # Normal colors
 [colors.normal]
-black   = '#16161d'
-red     = '#c34043'
-green   = '#76946a'
-yellow  = '#c0a36e'
-blue    = '#7e9cd8'
-magenta = '#957fb8'
-cyan    = '#6a9589'
-white   = '#c8c093'
+black   = '#282828'
+red     = '#cc241d'
+green   = '#98971a'
+yellow  = '#d79921'
+blue    = '#458588'
+magenta = '#b16286'
+cyan    = '#689d6a'
+white   = '#a89984'
 
 # Bright colors
 [colors.bright]
-black   = '#727169'
-red     = '#e82424'
-green   = '#98bb6c'
-yellow  = '#e6c384'
-blue    = '#7fb4ca'
-magenta = '#938aa9'
-cyan    = '#7aa89f'
-white   = '#dcd7ba'
+black   = '#928374'
+red     = '#fb4934'
+green   = '#b8bb26'
+yellow  = '#fabd2f'
+blue    = '#83a598'
+magenta = '#d3869b'
+cyan    = '#8ec07c'
+white   = '#ebdbb2'
 
 [colors.cursor]
-text   = '#1f1f28'
-cursor = '#98bb6c'
-
-[colors.selection]
-text = '#c8c093'
-background = '#2d4f67'
+text   = '#282828'
+cursor = '#d65d0e' 
