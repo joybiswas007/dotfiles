@@ -11,16 +11,16 @@ set $up     l
 set $right  semicolon
 
 # define names for workspaces
-set $ws1    "1:   Terminal "
-set $ws2    "2:   Code "
-set $ws3    "3:   Chromium "
+set $ws1    "1:   Term "
+set $ws2    "2:   Code "
+set $ws3    "3: 󰖟  Web "
 set $ws4    "4:   Files "
-set $ws5    "5:   Documents "
+set $ws5    "5:   Docs "
 set $ws6    "6:   Media "
 set $ws7    "7:   Design "
-set $ws8    "8:   Chat "
-set $ws9    "9:   General "
-set $ws10   "10:   Settings "
+set $ws8    "8:   Chat "
+set $ws9    "9:   Server "
+set $ws10   "10:   Config "
 
 # use $mod+Mouse to drag floating windows to their wanted position
 floating_modifier $mod
@@ -31,7 +31,7 @@ tiling_drag modifier titlebar
 # control focused window when follows the mouse movements
 focus_follows_mouse no
 
-# window border settings (Updated for clean colored outlines)
+# window border settings
 default_border          pixel 2
 default_floating_border pixel 2
 
@@ -49,7 +49,7 @@ popup_during_fullscreen smart
 # start a terminal
 bindsym $mod+Return workspace $ws1; exec --no-startup-id alacritty
 
-# start a program launcher (Updated to use our new rofi theme)
+# start a program launcher
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/gruvbox.rasi
 
 # switching window with win+tab
@@ -178,7 +178,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # manage i3 session
-bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -f "pango:Hack 9" -m "Do you really want to exit?" -B "    Exit " "i3-msg exit" -B "    Lock " "pkill i3-nagbar && i3lock-fancy -f Source-Sans-Pro" -B "    Reboot " "pkill i3-nagbar && reboot" -B "    Shutdown " "pkill i3-nagbar && shutdown -h now"
+bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -f "pango:Source Sans Pro 10" -m "Do you really want to exit?" -B "    Exit " "i3-msg exit" -B "    Lock " "pkill i3-nagbar && i3lock-fancy -f Source-Sans-Pro" -B "    Reboot " "pkill i3-nagbar && reboot" -B "    Shutdown " "pkill i3-nagbar && shutdown -h now"
 
 # Set shut down, restart and locking features
 bindsym $mod+x mode "$mode_system"
@@ -220,12 +220,12 @@ for_window [window_role="pop-up"]                   floating enable
 for_window [window_role="task_dialog"]              floating enable
 for_window [title="Preferences$"]                   floating enable
 
-# --- Gruvbox Warm Color Palette ---
-set $bg         #282828
-set $fg         #ebdbb2
-set $inactive   #504945
-set $focus      #d65d0e
-set $urgent     #cc241d
+# --- Kanagawa Color Palette ---
+set $bg       #1f1f28
+set $fg       #dcd7ba
+set $inactive #2a2a37
+set $focus    #98bb6c
+set $urgent   #c34043
 
 # class                 border    backgr.   text      indicator child_border
 client.focused          $focus    $focus    $bg       $focus    $focus
@@ -247,16 +247,16 @@ bar {
     strip_workspace_numbers yes
 
     colors {
-        background  #282828
-        statusline  #ebdbb2
-        separator   #504945
+        background  #1f1f28
+        statusline  #dcd7ba
+        separator   #54546d
         
         # class             border    backgr.   text
-        focused_workspace   $focus    $focus    #282828
+        focused_workspace   $focus    $focus    #1f1f28
         active_workspace    $bg       $bg       $fg
-        inactive_workspace  $bg       $bg       #a89984
+        inactive_workspace  $bg       $bg       #727169
         urgent_workspace    $urgent   $urgent   $fg
-        binding_mode        #98971a   #98971a   $bg
+        binding_mode        #e6c384   #e6c384   #1f1f28
     }
 }
 
