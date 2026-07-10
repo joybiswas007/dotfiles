@@ -1,11 +1,11 @@
 configuration {
     modi: "drun,window,run";
     show-icons: true;
-    display-drun: "Apps";
-    display-window: "Windows";
-    display-run: "Run";
+    display-drun: "󰮯 Apps";
+    display-window: "󰊠 Windows";
+    display-run: "󰊠 Run";
     drun-display-format: "{icon} {name}";
-    font: "Source Sans Pro 11.5";
+    font: "CaskaydiaCove NF 11";
 }
 
-@theme "~/.config/rofi/themes/gruvbox.rasi"
+@theme "~/.config/rofi/themes/arcade.rasi"

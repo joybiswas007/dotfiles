@@ -8,38 +8,42 @@ padding = { x = 12, y = 12 }
 dynamic_padding = true
 
 # Glassmorphism settings (Picom will handle the actual blur)
-opacity = 0.85
+opacity = 0.90
 
 [font]
-# Explicitly setting the size so it doesn't shrink
-size = 11.5
+normal = { family = "CaskaydiaCove NF", style = "Regular" }
+bold = { family = "CaskaydiaCove NF", style = "Bold" }
+italic = { family = "CaskaydiaCove NF", style = "Italic" }
+bold_italic = { family = "CaskaydiaCove NF", style = "Bold Italic" }
+size = 11
 
 [colors.primary]
-background = '#282828'
-foreground = '#ebdbb2'
+background = '#0D0E12'
+foreground = '#E2E4E9'
 
-# Normal colors
+# Retro Arcade colors
 [colors.normal]
-black   = '#282828'
-red     = '#cc241d'
-green   = '#98971a'
-yellow  = '#d79921'
-blue    = '#458588'
-magenta = '#b16286'
-cyan    = '#689d6a'
-white   = '#a89984'
+black   = '#0D0E12'
+red     = '#FF0000' # Blinky Red
+green   = '#00FF00'
+yellow  = '#FCE700' # Pac-Man Yellow
+blue    = '#0000D7' # Maze Blue
+magenta = '#FFB8FF' # Pinky Pink
+cyan    = '#00D7FF' # Inky Cyan
+white   = '#E2E4E9'
 
 # Bright colors
 [colors.bright]
-black   = '#928374'
-red     = '#fb4934'
-green   = '#b8bb26'
-yellow  = '#fabd2f'
-blue    = '#83a598'
-magenta = '#d3869b'
-cyan    = '#8ec07c'
-white   = '#ebdbb2'
+black   = '#505860'
+red     = '#FF5555'
+green   = '#55FF55'
+yellow  = '#FFFF55'
+blue    = '#5555FF'
+magenta = '#FFBBFF'
+cyan    = '#55FFFF'
+white   = '#FFFFFF'
 
 [colors.cursor]
-text   = '#282828'
-cursor = '#d65d0e' 
+text   = '#0D0E12'
+cursor = '#FCE700'
+

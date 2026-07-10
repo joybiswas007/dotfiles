@@ -11,16 +11,16 @@ set $up     l
 set $right  semicolon
 
 # define names for workspaces (Upgraded Devicons)
-set $ws1    "1:   Term "
-set $ws2    "2:   Code "
-set $ws3    "3: 󰖟  Web "
-set $ws4    "4:   Files "
-set $ws5    "5:   Docs "
-set $ws6    "6:   Media "
-set $ws7    "7:   Design "
-set $ws8    "8:   Chat "
-set $ws9    "9:   Server "
-set $ws10   "10:   Config "
+set $ws1    "1: 󰮯 "
+set $ws2    "2: 󰊠 "
+set $ws3    "3: 󰊠 "
+set $ws4    "4: 󰊠 "
+set $ws5    "5: 󰊠 "
+set $ws6    "6: ⬝ "
+set $ws7    "7: ⬝ "
+set $ws8    "8: 󰊠 "
+set $ws9    "9: 󰊠 "
+set $ws10   "10:  "
 
 # use $mod+Mouse to drag floating windows to their wanted position
 floating_modifier $mod
@@ -32,8 +32,8 @@ tiling_drag modifier titlebar
 focus_follows_mouse no
 
 # window border settings (Clean colored outlines)
-default_border          pixel 2
-default_floating_border pixel 2
+default_border          pixel 4
+default_floating_border pixel 4
 
 # hiding borders adjacent to the screen edges
 hide_edge_borders none
@@ -50,10 +50,10 @@ popup_during_fullscreen smart
 bindsym $mod+Return workspace $ws1; exec --no-startup-id alacritty
 
 # start a program launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/gruvbox.rasi
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # switching window with win+tab
-bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/gruvbox.rasi
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -220,45 +220,47 @@ for_window [window_role="pop-up"]                   floating enable
 for_window [window_role="task_dialog"]              floating enable
 for_window [title="Preferences$"]                   floating enable
 
-# --- Gruvbox Warm Color Palette ---
-set $bg         #282828
-set $fg         #ebdbb2
-set $inactive   #504945
-set $focus      #d65d0e
-set $urgent     #cc241d
+# --- Retro Arcade Pac-Man Palette ---
+set $bg         #0D0E12
+set $fg         #E2E4E9
+set $inactive   #505860
+set $focus      #00D7FF
+set $urgent     #FF0000
+set $maze       #0000D7
 
 # class                 border    backgr.   text      indicator child_border
 client.focused          $focus    $focus    $bg       $focus    $focus
-client.focused_inactive $inactive $inactive $fg       $inactive $inactive
-client.unfocused        $inactive $inactive $fg       $inactive $inactive
+client.focused_inactive $maze     $bg       $fg       $maze     $maze
+client.unfocused        $maze     $bg       $fg       $maze     $maze
 client.urgent           $urgent   $urgent   $fg       $urgent   $urgent
 client.placeholder      $bg       $bg       $fg       $bg       $bg
 client.background       $bg
 
-# start i3bar to display a workspace bar
-bar {
-    status_command          i3blocks
-    bindsym button4         nop
-    bindsym button5         nop
-    position                bottom
-    tray_output             primary
-    separator_symbol        "·"
-    workspace_buttons       yes
-    strip_workspace_numbers yes
-
-    colors {
-        background  #282828
-        statusline  #ebdbb2
-        separator   #504945
-        
-        # class             border    backgr.   text
-        focused_workspace   $focus    $focus    #282828
-        active_workspace    $bg       $bg       $fg
-        inactive_workspace  $bg       $bg       #a89984
-        urgent_workspace    $urgent   $urgent   $fg
-        binding_mode        #98971a   #98971a   $bg
-    }
-}
+# Polybar will be launched via autostart applications below.
+# i3bar configuration commented out to prevent duplicate status bars.
+# bar {
+#     status_command          i3blocks
+#     bindsym button4         nop
+#     bindsym button5         nop
+#     position                bottom
+#     tray_output             primary
+#     separator_symbol        "·"
+#     workspace_buttons       yes
+#     strip_workspace_numbers yes
+# 
+#     colors {
+#         background  #282828
+#         statusline  #ebdbb2
+#         separator   #504945
+#         
+#         # class             border    backgr.   text
+#         focused_workspace   $focus    $focus    #282828
+#         active_workspace    $bg       $bg       $fg
+#         inactive_workspace  $bg       $bg       #a89984
+#         urgent_workspace    $urgent   $urgent   $fg
+#         binding_mode        #98971a   #98971a   $bg
+#     }
+# }
 
 # local config file
 include local.conf
@@ -275,6 +277,7 @@ exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id conky -d
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
